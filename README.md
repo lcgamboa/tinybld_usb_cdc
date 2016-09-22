@@ -11,6 +11,8 @@ The focus of project is implement a c version of PIC18F4550 tiny bootload firmwa
 
 The code is based in Tiny Bootloader (http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm) and Minimal USB CDC ACM (http://www.sparetimelabs.com/usbcdcacm/usbcdcacm.php)
 
+The code was tested with sdcc 3.5.0.
+
 ##Limitations 
 
 The CDC-USB bootloader size is 3720 bytes (1860 Words).
@@ -25,9 +27,9 @@ Memory range of user code must be set to 0x0000 at 0x7177.
 ##Project folders
 
 * hex\_firmware/          - firmware of USB-CDC Tiny bootloader 
-* src/firmware\_asm.X/    - Original serial asm firmware (100 Words -  0,61% of total flash memory)
-* src/firmware\_c.X/      - Serial c firmware for sdcc   (388 Words -  2,37% of total flash memory)  
-* src/firmware\_usb.X/    - USB-CDC c firmware for sdcc (1860 Words - 11,35% of total flash memory)
+* src/firmware\_asm.X/    - Source of original serial asm firmware (100 Words -  0,61% of total flash memory)
+* src/firmware\_c.X/      - Source of serial c firmware for sdcc   (388 Words -  2,37% of total flash memory)  
+* src/firmware\_usb.X/    - **Source of USB-CDC c firmware for sdcc** (1860 Words - 11,35% of total flash memory)
 
 * src/template\_usb.X/    - Sample user project configured to work with USB-CDC for sdcc and XC8.    
 
@@ -46,8 +48,9 @@ Memory range of user code must be set to 0x0000 at 0x7177.
 ##PC side software:
 
 ###For linux
-* ***Tiny Pic Bootloader for GNU/Linux*** https://github.com/lcgamboa/tinybldlin 
-..* To configure edit modules/pictype.py pictype 0x55 and change bsize for 3720. 
+* **Tiny Pic Bootloader for GNU/Linux** https://github.com/lcgamboa/tinybldlin 
+
+To configure edit modules/pictype.py pictype 0x55 and change bsize for 3720. 
 
 Like:
 ```
@@ -58,8 +61,9 @@ Like:
 ```
 
 ##For windows
-* **Tiny Multi Bootloader+***  http://tinypicbootload.sourceforge.net/
-..* To configure edit piccodes.ini pictype 0x55 and change bsize for 3720.
+* **Tiny Multi Bootloader+**  http://tinypicbootload.sourceforge.net/
+
+To configure edit piccodes.ini pictype 0x55 and change bsize for 3720.
 
 Like:
 ```
@@ -67,7 +71,8 @@ $55, C, 18F 2550/4550,              $8000, $100, 3720, default,
 ```
 
 * **Tiny Bootloader**       http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm
-..* To configure edit tinybld.ini SizeOfBLD\_W for 1860.
+
+To configure edit tinybld.ini SizeOfBLD\_W for 1860.
 
 Like:
 ```
