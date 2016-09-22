@@ -65,12 +65,12 @@ To use /dev/ttyACMx with Tiny bootloader it is necessary stop, disable or config
   
 To stop the service (per session): 
 ```
-systemctl stop ModemManager.service
+sudo systemctl stop ModemManager.service
 ```
 
 To disable the server (permanently): 
 ```
-systemctl disable ModemManager.service
+sudo systemctl disable ModemManager.service
 ```
 
 To configure ModemManager to ignore USB-CDC:
