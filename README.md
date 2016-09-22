@@ -60,6 +60,27 @@ Like:
         bsize=3720;
 ```
 
+In Linux the service ModemManager automatic probe /dev/ttyACMx. To use /dev/ttyACMx with Tiny bootloader is necessary stop, disable or configure ModemManager to not probe the port.
+  
+To stop the service (per session): 
+```
+systemctl stop ModemManager.service
+```
+
+To disable the server (permanently): 
+```
+systemctl disable ModemManager.service
+```
+
+To configure ModemManager to ignore USB-CDC:
+```
+1. Open or create the file: **sudo gedit /etc/udev/rules.d/99-ttyacms.rules**
+2. Add the line: **ATTRS{idVendor}=="0ca6" ATTRS{idProduct}=="a050", ENV{ID\_MM\_DEVICE\_IGNORE}="1"**
+3. Save the file
+4. Reload udev rules with command: **sudo udevadm control --reload-rules**
+```
+
+
 ##For windows
 * **Tiny Multi Bootloader+**  http://tinypicbootload.sourceforge.net/
 
