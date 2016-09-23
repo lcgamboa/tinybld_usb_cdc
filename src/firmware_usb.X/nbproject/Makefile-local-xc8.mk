@@ -20,17 +20,17 @@ PATH:=/home/gamboa/.mplab_ide/dev/v3.30/modules/../../bin/:$(PATH)
 # Path to java used to run MPLAB X when this makefile was created
 MP_JAVA_PATH="/opt/microchip/mplabx/v3.30/sys/java/jre1.8.0_65/bin/"
 OS_CURRENT="$(shell uname -s)"
-MP_CC="/opt/microchip/xc8/v1.36/bin/xc8"
+MP_CC="/opt/microchip/xc8/v1.35/bin/xc8"
 # MP_CPPC is not defined
 # MP_BC is not defined
-MP_AS="/opt/microchip/xc8/v1.36/bin/xc8"
-MP_LD="/opt/microchip/xc8/v1.36/bin/xc8"
+MP_AS="/opt/microchip/xc8/v1.35/bin/xc8"
+MP_LD="/opt/microchip/xc8/v1.35/bin/xc8"
 # MP_AR is not defined
 DEP_GEN=${MP_JAVA_PATH}java -jar "/home/gamboa/.mplab_ide/dev/v3.30/modules/../../bin/extractobjectdependencies.jar"
-MP_CC_DIR="/opt/microchip/xc8/v1.36/bin"
+MP_CC_DIR="/opt/microchip/xc8/v1.35/bin"
 # MP_CPPC_DIR is not defined
 # MP_BC_DIR is not defined
-MP_AS_DIR="/opt/microchip/xc8/v1.36/bin"
-MP_LD_DIR="/opt/microchip/xc8/v1.36/bin"
+MP_AS_DIR="/opt/microchip/xc8/v1.35/bin"
+MP_LD_DIR="/opt/microchip/xc8/v1.35/bin"
 # MP_AR_DIR is not defined
 # MP_BC_DIR is not defined

@@ -202,9 +202,9 @@ static volatile unsigned char control_transfer_buffer[E0SZ] @0x540;
 volatile unsigned char cdc_rx_buffer[USBCDC_BUFFER_LEN] @0x550;
 volatile unsigned char cdc_tx_buffer[USBCDC_BUFFER_LEN] @0x570;
 static volatile unsigned char cdcint_buffer[USBCDC_BUFFER_LEN] @0x590;
-
+static cdc_line_coding_ cdc_line_coding @0x5B0;
 #else
-#pragma udata usbram5 setup_packet control_transfer_buffer cdc_rx_buffer cdc_tx_buffer cdcint_buffer
+#pragma udata usbram5 setup_packet control_transfer_buffer cdc_rx_buffer cdc_tx_buffer cdcint_buffer cdc_line_coding
 
 static volatile setup_packet_struct setup_packet;
 static volatile unsigned char control_transfer_buffer[E0SZ];
@@ -213,9 +213,10 @@ static volatile unsigned char control_transfer_buffer[E0SZ];
 volatile unsigned char cdc_rx_buffer[USBCDC_BUFFER_LEN];
 volatile unsigned char cdc_tx_buffer[USBCDC_BUFFER_LEN];
 static volatile unsigned char cdcint_buffer[USBCDC_BUFFER_LEN];
+static cdc_line_coding_ cdc_line_coding;
 #endif
 
-static cdc_line_coding_ cdc_line_coding;
+
 
 
 void usbcdc_putchar(char c)__wparam {

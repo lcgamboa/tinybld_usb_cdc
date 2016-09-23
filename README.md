@@ -11,7 +11,7 @@ The focus of project is implement a c version of PIC18F4550 tiny bootload firmwa
 
 The code is based in Tiny Bootloader (http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm) and Minimal USB CDC ACM (http://www.sparetimelabs.com/usbcdcacm/usbcdcacm.php)
 
-The code was tested with sdcc 3.5.0.
+The code was tested with sdcc 3.5.0. (Also it compile with XC8)
 
 ##Limitations 
 
@@ -21,7 +21,7 @@ The code of bootloader is located in address 0x7178 at 0x7FFF of flash memory.
 Memory range of user code must be set to 0x0000 at 0x7177.
 
 * In sdcc compiler the memory range is set in .lkr file. 
-* In XC8  compiler the memory range is set in "ROM ranges" option of XC8-Linker.
+* In XC8  compiler the memory range is set in "ROM ranges" option of XC8-Linker. The option "Program the device with default config words" must be unchecked. 
 
 
 ##Project folders

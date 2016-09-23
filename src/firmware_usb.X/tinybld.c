@@ -31,9 +31,17 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //The same of lkr file    bootloader size = 3720 = 0x0E88         
 #define first_address  0x7178  //0x8000-0x0E80
 #ifdef __XC8
-void space() @ 0x7178;
+void space() @0x7178;
+
+void jinit() @0x0000
+{
+#asm
+    GLOBAL _jinit
+    GOTO 0x7180
+#endasm;    
+}
 #else
-#pragma code space 0x7178 //#pragma code space 0x7180 //
+#pragma code space 0x7178 
 #endif
 
 
@@ -58,21 +66,30 @@ unsigned long ct;
 //space to alloc inital goto
 void space()__naked
 {
+#ifdef __XC8    
+    __asm
+    GLOBAL _space
+    GOTO 0x0100
+    __endasm;
+#else
     __asm
     GOTO 0x0100
-    NOP
-    NOP
     __endasm;
+#endif    
 }
 
 //sample program
 #ifdef __XC8
-void user() @ 0x0100
+void user() @0x0100
+{
+#asm
+    GLOBAL _user
+#endasm;
 #else
 #pragma code user 0x0100
 void user()
-#endif
 {
+#endif
     unsigned int x;
     TRISB=0;
     
