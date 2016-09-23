@@ -1,0 +1,10 @@
+/src/template_usb.X/build/sdcc/
+/src/template_usb.X/dist/sdcc/
+/src/template_usb.X/dist/xc8/
+/src/template_usb.X/build/xc8/
+/src/firmware_usb.X/build/default/
+/src/firmware_usb.X/dist/default/
+/src/firmware_usb.X/build/sdcc/
+/src/firmware_usb.X/dist/sdcc/
+/src/firmware_usb.X/build/xc8/
+/src/firmware_usb.X/dist/xc8/

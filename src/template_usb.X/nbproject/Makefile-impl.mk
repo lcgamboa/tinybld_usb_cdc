@@ -27,7 +27,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=template_usb.X
 
 # Active Configuration
-DEFAULTCONF=sdcc
+DEFAULTCONF=xc8
 CONF=${DEFAULTCONF}
 
 # All Configurations

@@ -30,8 +30,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         //must be aligned with 64 boundary 
 //The same of lkr file    bootloader size = 3720 = 0x0E88         
 #define first_address  0x7178  //0x8000-0x0E80
+#ifdef __XC8
+void space() @ 0x7178;
+#else
 #pragma code space 0x7178 //#pragma code space 0x7180 //
-
+#endif
 
 
 #define IdTypePIC 0x55
@@ -63,8 +66,12 @@ void space()__naked
 }
 
 //sample program
+#ifdef __XC8
+void user() @ 0x0100
+#else
 #pragma code user 0x0100
 void user()
+#endif
 {
     unsigned int x;
     TRISB=0;

@@ -1,9 +1,9 @@
 /* 
 File: usbcdc.c
-
-Copyright (c) 2010 Kustaa Nyholm / SpareTimeLabs
-Copyright (c) 2016 Luis Claudio Gambôa Lopes
  
+Copyright (c) 2016 Luis Claudio Gambôa Lopes
+Copyright (c) 2010 Kustaa Nyholm / SpareTimeLabs
+
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
@@ -19,8 +19,11 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
  */
-
-#include <pic18fregs.h>
+#ifdef __XC8
+#include <xc.h> 
+#else
+#include "pic18fregs.h"
+#endif
 #include "usbcdc.h"
 #include "usbpic_defs.h"
 #include "usbcdc_defs.h"
@@ -184,21 +187,36 @@ __code unsigned char string_descriptor2[] = {//
     'C', 0x00, //
 };
 
+
+static unsigned char tx_len = 0;
+static unsigned char rx_idx = 0;
+
 // Put endpoint 0 buffers into dual port RAM
 // Put USB I/O buffers into dual port RAM.
+#ifdef __XC8
+
+static volatile setup_packet_struct setup_packet @0x500;
+static volatile unsigned char control_transfer_buffer[E0SZ] @0x540;
+
+// CDC buffers
+volatile unsigned char cdc_rx_buffer[USBCDC_BUFFER_LEN] @0x550;
+volatile unsigned char cdc_tx_buffer[USBCDC_BUFFER_LEN] @0x570;
+static volatile unsigned char cdcint_buffer[USBCDC_BUFFER_LEN] @0x590;
+
+#else
 #pragma udata usbram5 setup_packet control_transfer_buffer cdc_rx_buffer cdc_tx_buffer cdcint_buffer
 
 static volatile setup_packet_struct setup_packet;
 static volatile unsigned char control_transfer_buffer[E0SZ];
 
 // CDC buffers
-static unsigned char tx_len = 0;
-static unsigned char rx_idx = 0;
-
 volatile unsigned char cdc_rx_buffer[USBCDC_BUFFER_LEN];
 volatile unsigned char cdc_tx_buffer[USBCDC_BUFFER_LEN];
 static volatile unsigned char cdcint_buffer[USBCDC_BUFFER_LEN];
+#endif
+
 static cdc_line_coding_ cdc_line_coding;
+
 
 void usbcdc_putchar(char c)__wparam {
     while (usbcdc_wr_busy());

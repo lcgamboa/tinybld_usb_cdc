@@ -37,6 +37,16 @@ typedef struct _setup_packet_struct
 #define USTAT_OUT (0x00)
 
 //endpoints
+#ifdef __XC8
+volatile BDT ep0_o @0x0400; 
+volatile BDT ep0_i @0x0404; 
+volatile BDT ep1_o @0x0408; 
+volatile BDT ep1_i @0x040C; 
+volatile BDT ep2_o @0x0410; 
+volatile BDT ep2_i @0x0414; 
+volatile BDT ep3_o @0x0418; 
+volatile BDT ep3_i @0x041C; 
+#else
 volatile BDT __at (0x0400+0*8) ep0_o; 
 volatile BDT __at (0x0404+0*8) ep0_i; 
 volatile BDT __at (0x0400+1*8) ep1_o; 
@@ -45,5 +55,7 @@ volatile BDT __at (0x0400+2*8) ep2_o;
 volatile BDT __at (0x0404+2*8) ep2_i; 
 volatile BDT __at (0x0400+3*8) ep3_o; 
 volatile BDT __at (0x0404+3*8) ep3_i; 
+#endif
+
 
 #endif

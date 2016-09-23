@@ -22,6 +22,18 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef USBCDC_H
 #define USBCDC_H
 
+#ifdef __XC8
+#define __wparam
+#define __naked
+#define __data
+#define __code const
+#define __asm #asm
+#define __endasm #endasm;
+#else
+#pragma udata usbram5 setup_packet control_transfer_buffer cdc_rx_buffer cdc_tx_buffer cdcint_buffer
+#endif
+
+
 extern unsigned char usbcdc_device_state;
 
 #define USBCDC_BUFFER_LEN 32
@@ -44,7 +56,7 @@ void usbcdc_flush();
 
 char usbcdc_getchar() ;
 
-#pragma udata usbram5 setup_packet control_transfer_buffer cdc_rx_buffer cdc_tx_buffer cdcint_buffer
+
 extern volatile unsigned char cdc_tx_buffer[];
 char usbcdc_wr_busy();
 void usbcdc_write(unsigned char len) __wparam;

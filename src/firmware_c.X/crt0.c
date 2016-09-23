@@ -30,7 +30,7 @@
  * based on Microchip MPLAB-C18 startup files
  */
 
-#pragma code _startup 0x7180 //first_address+8
+#pragma code _startup 0x7D00 //first_address+8
 
 extern stack_end;
 extern TBLPTRU;

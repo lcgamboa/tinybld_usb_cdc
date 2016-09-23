@@ -13,8 +13,8 @@ ifeq "${IGNORE_LOCAL}" "TRUE"
 else
 include Makefile
 # Include makefile containing local settings
-ifeq "$(wildcard nbproject/Makefile-local-default.mk)" "nbproject/Makefile-local-default.mk"
-include nbproject/Makefile-local-default.mk
+ifeq "$(wildcard nbproject/Makefile-local-sdcc.mk)" "nbproject/Makefile-local-sdcc.mk"
+include nbproject/Makefile-local-sdcc.mk
 endif
 endif
 
@@ -25,7 +25,7 @@ MV=mv
 CP=cp 
 
 # Macros
-CND_CONF=default
+CND_CONF=sdcc
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=cof
@@ -81,7 +81,7 @@ FIXDEPS=fixDeps
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/firmware_usb.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-sdcc.mk dist/${CND_CONF}/${IMAGE_TYPE}/firmware_usb.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
@@ -141,8 +141,8 @@ endif
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
-	${RM} -r build/default
-	${RM} -r dist/default
+	${RM} -r build/sdcc
+	${RM} -r dist/sdcc
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
